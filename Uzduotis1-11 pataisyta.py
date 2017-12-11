@@ -1,12 +1,9 @@
 s = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-veiksmas=""
+action=""
 def print_horiz_line():
     print( " --- --- ---")
 
-def print_vert_line():
-    print( "| " * (3 + 1) )
-
-def lentele():
+def table():
 
     print_horiz_line()
     print ('|', s[0],'|', s[1],'|', s[2], '|' )
@@ -16,35 +13,30 @@ def lentele():
     print ('|', s[6],'|', s[7],'|', s[8], '|' )
     print_horiz_line()
 
-lentele()
+table()
 
-istrinti_sk = []
-istr_sk_kiekis=0
+del_nr = []
+counter=0
 
 
-while veiksmas != "0":
-    print ("Exit - 0, Pasirink istrinti - d ar prideti - a, pvz. d2: ")
-    veiksmas = input()
+while action != "0":
+    print ("Exit - 0, del - d, add - a, exampl: d2, a2 ")
+    action = input()
     
-    if veiksmas =="0":
+    if action =="0":
         print ("EXIT")
         break
-    sk=int(veiksmas[1])
-    if veiksmas[0] == "d":
+    sk=int(action[1])
+    if action[0] == "d":
         d_sk = sk
         s[d_sk-1]="X"
-        istrinti_sk.append(d_sk)
-        istr_sk_kiekis=istrinti_sk.count(d_sk)
+        del_nr.append(d_sk)
+        counter=del_nr.count(d_sk)
         
-        if istr_sk_kiekis>2:
-            print ("Skaiciu "+ str(d_sk) +" istrynei jau daugiau nei du kartus")
+        if counter>2:
+            print ("Number "+ str(d_sk) +" has been deleted more the two times!")
             s[d_sk-1]=d_sk
-        lentele()
-    if veiksmas[0] == "a":
+        table()
+    if action[0] == "a":
         s[sk - 1] = sk
-        lentele()
-       
-
-
-
-
+        table()
